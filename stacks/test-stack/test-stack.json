@@ -1,0 +1,12 @@
+{
+  "Resources" : {
+    "name149EC75A" : {
+      "Type" : "AWS::S3::Bucket",
+      "Properties" : {
+        "BucketName" : "name"
+      },
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
+    }
+  }
+}
