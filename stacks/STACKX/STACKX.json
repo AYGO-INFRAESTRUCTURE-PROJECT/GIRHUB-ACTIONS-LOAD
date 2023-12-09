@@ -155,10 +155,10 @@
         }
       }
     },
-    "Intance0001InstanceSecurityGroup2B6F79D1" : {
+    "Instance0001InstanceSecurityGroup690D87C4" : {
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
-        "GroupDescription" : "STACKX/Intance0001/InstanceSecurityGroup",
+        "GroupDescription" : "STACKX/Instance0001/InstanceSecurityGroup",
         "SecurityGroupEgress" : [ {
           "CidrIp" : "0.0.0.0/0",
           "Description" : "Allow all outbound traffic by default",
@@ -166,20 +166,20 @@
         } ],
         "Tags" : [ {
           "Key" : "Name",
-          "Value" : "STACKX/Intance0001"
+          "Value" : "STACKX/Instance0001"
         } ],
         "VpcId" : {
           "Ref" : "testvpc8985080E"
         }
       }
     },
-    "Intance0001InstanceProfile042905C9" : {
+    "Instance0001InstanceProfile8D6BC796" : {
       "Type" : "AWS::IAM::InstanceProfile",
       "Properties" : {
         "Roles" : [ "LabRole" ]
       }
     },
-    "Intance0001F0A4075B" : {
+    "Instance0001D7DCA71A" : {
       "Type" : "AWS::EC2::Instance",
       "Properties" : {
         "AvailabilityZone" : {
@@ -188,21 +188,21 @@
           } ]
         },
         "IamInstanceProfile" : {
-          "Ref" : "Intance0001InstanceProfile042905C9"
+          "Ref" : "Instance0001InstanceProfile8D6BC796"
         },
         "ImageId" : {
           "Ref" : "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
         },
         "InstanceType" : "t2.micro",
         "SecurityGroupIds" : [ {
-          "Fn::GetAtt" : [ "Intance0001InstanceSecurityGroup2B6F79D1", "GroupId" ]
+          "Fn::GetAtt" : [ "Instance0001InstanceSecurityGroup690D87C4", "GroupId" ]
         } ],
         "SubnetId" : {
           "Ref" : "testvpcpublicSubnet1Subnet7BCDDC7D"
         },
         "Tags" : [ {
           "Key" : "Name",
-          "Value" : "STACKX/Intance0001"
+          "Value" : "STACKX/Instance0001"
         } ],
         "UserData" : {
           "Fn::Base64" : "#!/bin/bash"
@@ -249,10 +249,10 @@
       "UpdateReplacePolicy" : "Delete",
       "DeletionPolicy" : "Delete"
     },
-    "orderfilesB8CDE178" : {
+    "orderfiles000011419542A" : {
       "Type" : "AWS::S3::Bucket",
       "Properties" : {
-        "BucketName" : "order-files",
+        "BucketName" : "order-files-00001",
         "VersioningConfiguration" : {
           "Status" : "Enabled"
         }
