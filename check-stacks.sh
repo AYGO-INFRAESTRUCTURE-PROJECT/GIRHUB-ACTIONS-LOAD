@@ -15,7 +15,7 @@ if [ -d "$stacks_folder" ]; then
             result=$(sam validate --template-file "$stack_file_name" --lint)
             echo "$result"
             if [[ $result == *"valid SAM Template"* ]]; then
-                echo "El stack $stack_name es válido."
+                echo "-------------stack $stack_name is a valid to deploy.-------------"
                 sam deploy --template-file $stack_file_name --stack-name $stack_name --capabilities CAPABILITY_IAM
             fi
         else
