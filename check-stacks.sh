@@ -19,10 +19,10 @@ if [ -d "$stacks_folder" ]; then
                 sam deploy --template-file $stack_file_name --stack-name $stack_name --capabilities CAPABILITY_IAM
             fi
         else
-            echo "El archivo $stack_file_name no existe."
+            echo "File $stack_file_name does not exist."
         fi
         echo "---------------------------------"
     done
 else
-    echo "La carpeta $carpeta_stack no existe."
+    echo "Folder $carpeta_stack does not exist."
 fi
