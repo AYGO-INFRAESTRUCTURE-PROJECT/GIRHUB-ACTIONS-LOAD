@@ -16,7 +16,7 @@ if [ -d "$stacks_folder" ]; then
             echo "$result"
             if [[ $result == *"valid SAM Template"* ]]; then
                 echo "El stack $stack_name es válido."
-                sam deploy --template-file $stack_file_name --stack-name $stack_name
+                sam deploy --template-file $stack_file_name --stack-name $stack_name --capabilities CAPABILITY_IAM
             fi
         else
             echo "El archivo $stack_file_name no existe."
