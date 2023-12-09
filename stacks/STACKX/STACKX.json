@@ -1,219 +1,35 @@
 {
   "Resources" : {
-    "testvpc8985080E" : {
-      "Type" : "AWS::EC2::VPC",
+    "asd84EC182D" : {
+      "Type" : "AWS::DynamoDB::Table",
       "Properties" : {
-        "CidrBlock" : "10.0.0.0/16",
-        "EnableDnsHostnames" : true,
-        "EnableDnsSupport" : true,
-        "InstanceTenancy" : "default",
-        "Tags" : [ {
-          "Key" : "Name",
-          "Value" : "STACKX/test-vpc"
-        } ]
-      }
+        "KeySchema" : [ {
+          "AttributeName" : "ADDRESS",
+          "KeyType" : "HASH"
+        } ],
+        "AttributeDefinitions" : [ {
+          "AttributeName" : "ADDRESS",
+          "AttributeType" : "S"
+        } ],
+        "ProvisionedThroughput" : {
+          "ReadCapacityUnits" : 5,
+          "WriteCapacityUnits" : 5
+        },
+        "TableName" : "asd"
+      },
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
     },
-    "testvpcpublicSubnet1Subnet7BCDDC7D" : {
-      "Type" : "AWS::EC2::Subnet",
+    "ddd3B4CF009" : {
+      "Type" : "AWS::S3::Bucket",
       "Properties" : {
-        "CidrBlock" : "10.0.0.0/17",
-        "VpcId" : {
-          "Ref" : "testvpc8985080E"
-        },
-        "AvailabilityZone" : {
-          "Fn::Select" : [ 0, {
-            "Fn::GetAZs" : ""
-          } ]
-        },
-        "MapPublicIpOnLaunch" : true,
-        "Tags" : [ {
-          "Key" : "aws-cdk:subnet-name",
-          "Value" : "public"
-        }, {
-          "Key" : "aws-cdk:subnet-type",
-          "Value" : "Public"
-        }, {
-          "Key" : "Name",
-          "Value" : "STACKX/test-vpc/publicSubnet1"
-        } ]
-      }
-    },
-    "testvpcpublicSubnet1RouteTable465CD5DF" : {
-      "Type" : "AWS::EC2::RouteTable",
-      "Properties" : {
-        "VpcId" : {
-          "Ref" : "testvpc8985080E"
-        },
-        "Tags" : [ {
-          "Key" : "Name",
-          "Value" : "STACKX/test-vpc/publicSubnet1"
-        } ]
-      }
-    },
-    "testvpcpublicSubnet1RouteTableAssociation1D27724D" : {
-      "Type" : "AWS::EC2::SubnetRouteTableAssociation",
-      "Properties" : {
-        "RouteTableId" : {
-          "Ref" : "testvpcpublicSubnet1RouteTable465CD5DF"
-        },
-        "SubnetId" : {
-          "Ref" : "testvpcpublicSubnet1Subnet7BCDDC7D"
-        }
-      }
-    },
-    "testvpcpublicSubnet1DefaultRouteF9C151E8" : {
-      "Type" : "AWS::EC2::Route",
-      "Properties" : {
-        "RouteTableId" : {
-          "Ref" : "testvpcpublicSubnet1RouteTable465CD5DF"
-        },
-        "DestinationCidrBlock" : "0.0.0.0/0",
-        "GatewayId" : {
-          "Ref" : "testvpcIGW2C2BA83F"
+        "BucketName" : "ddd",
+        "VersioningConfiguration" : {
+          "Status" : "Enabled"
         }
       },
-      "DependsOn" : [ "testvpcVPCGW7060AA15" ]
-    },
-    "testvpcpublicSubnet2SubnetC35BC5E2" : {
-      "Type" : "AWS::EC2::Subnet",
-      "Properties" : {
-        "CidrBlock" : "10.0.128.0/17",
-        "VpcId" : {
-          "Ref" : "testvpc8985080E"
-        },
-        "AvailabilityZone" : {
-          "Fn::Select" : [ 1, {
-            "Fn::GetAZs" : ""
-          } ]
-        },
-        "MapPublicIpOnLaunch" : true,
-        "Tags" : [ {
-          "Key" : "aws-cdk:subnet-name",
-          "Value" : "public"
-        }, {
-          "Key" : "aws-cdk:subnet-type",
-          "Value" : "Public"
-        }, {
-          "Key" : "Name",
-          "Value" : "STACKX/test-vpc/publicSubnet2"
-        } ]
-      }
-    },
-    "testvpcpublicSubnet2RouteTable2C61A6B3" : {
-      "Type" : "AWS::EC2::RouteTable",
-      "Properties" : {
-        "VpcId" : {
-          "Ref" : "testvpc8985080E"
-        },
-        "Tags" : [ {
-          "Key" : "Name",
-          "Value" : "STACKX/test-vpc/publicSubnet2"
-        } ]
-      }
-    },
-    "testvpcpublicSubnet2RouteTableAssociationDA0D277E" : {
-      "Type" : "AWS::EC2::SubnetRouteTableAssociation",
-      "Properties" : {
-        "RouteTableId" : {
-          "Ref" : "testvpcpublicSubnet2RouteTable2C61A6B3"
-        },
-        "SubnetId" : {
-          "Ref" : "testvpcpublicSubnet2SubnetC35BC5E2"
-        }
-      }
-    },
-    "testvpcpublicSubnet2DefaultRoute90DCE3DB" : {
-      "Type" : "AWS::EC2::Route",
-      "Properties" : {
-        "RouteTableId" : {
-          "Ref" : "testvpcpublicSubnet2RouteTable2C61A6B3"
-        },
-        "DestinationCidrBlock" : "0.0.0.0/0",
-        "GatewayId" : {
-          "Ref" : "testvpcIGW2C2BA83F"
-        }
-      },
-      "DependsOn" : [ "testvpcVPCGW7060AA15" ]
-    },
-    "testvpcIGW2C2BA83F" : {
-      "Type" : "AWS::EC2::InternetGateway",
-      "Properties" : {
-        "Tags" : [ {
-          "Key" : "Name",
-          "Value" : "STACKX/test-vpc"
-        } ]
-      }
-    },
-    "testvpcVPCGW7060AA15" : {
-      "Type" : "AWS::EC2::VPCGatewayAttachment",
-      "Properties" : {
-        "VpcId" : {
-          "Ref" : "testvpc8985080E"
-        },
-        "InternetGatewayId" : {
-          "Ref" : "testvpcIGW2C2BA83F"
-        }
-      }
-    },
-    "qqqqqInstanceSecurityGroup7569C16C" : {
-      "Type" : "AWS::EC2::SecurityGroup",
-      "Properties" : {
-        "GroupDescription" : "STACKX/qqqqq/InstanceSecurityGroup",
-        "SecurityGroupEgress" : [ {
-          "CidrIp" : "0.0.0.0/0",
-          "Description" : "Allow all outbound traffic by default",
-          "IpProtocol" : "-1"
-        } ],
-        "Tags" : [ {
-          "Key" : "Name",
-          "Value" : "STACKX/qqqqq"
-        } ],
-        "VpcId" : {
-          "Ref" : "testvpc8985080E"
-        }
-      }
-    },
-    "qqqqqInstanceProfileC512AF37" : {
-      "Type" : "AWS::IAM::InstanceProfile",
-      "Properties" : {
-        "Roles" : [ "LabRole" ]
-      }
-    },
-    "qqqqqE38FCD87" : {
-      "Type" : "AWS::EC2::Instance",
-      "Properties" : {
-        "AvailabilityZone" : {
-          "Fn::Select" : [ 0, {
-            "Fn::GetAZs" : ""
-          } ]
-        },
-        "IamInstanceProfile" : {
-          "Ref" : "qqqqqInstanceProfileC512AF37"
-        },
-        "ImageId" : {
-          "Ref" : "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
-        },
-        "InstanceType" : "t2.micro",
-        "SecurityGroupIds" : [ {
-          "Fn::GetAtt" : [ "qqqqqInstanceSecurityGroup7569C16C", "GroupId" ]
-        } ],
-        "SubnetId" : {
-          "Ref" : "testvpcpublicSubnet1Subnet7BCDDC7D"
-        },
-        "Tags" : [ {
-          "Key" : "Name",
-          "Value" : "STACKX/qqqqq"
-        } ],
-        "UserData" : {
-          "Fn::Base64" : "#!/bin/bash"
-        }
-      }
-    }
-  },
-  "Parameters" : {
-    "SsmParameterValueawsserviceamiamazonlinuxlatestamznamihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter" : {
-      "Type" : "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
-      "Default" : "/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2"
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
     }
   }
 }
