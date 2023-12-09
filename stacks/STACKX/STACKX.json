@@ -219,6 +219,66 @@
       },
       "UpdateReplacePolicy" : "Delete",
       "DeletionPolicy" : "Delete"
+    },
+    "Customers6955EA0A" : {
+      "Type" : "AWS::DynamoDB::Table",
+      "Properties" : {
+        "KeySchema" : [ {
+          "AttributeName" : "ADDRESS",
+          "KeyType" : "HASH"
+        } ],
+        "AttributeDefinitions" : [ {
+          "AttributeName" : "ADDRESS",
+          "AttributeType" : "S"
+        } ],
+        "ProvisionedThroughput" : {
+          "ReadCapacityUnits" : 5,
+          "WriteCapacityUnits" : 5
+        },
+        "TableName" : "Customers"
+      },
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
+    },
+    "Products229621C6" : {
+      "Type" : "AWS::DynamoDB::Table",
+      "Properties" : {
+        "KeySchema" : [ {
+          "AttributeName" : "ADDRESS",
+          "KeyType" : "HASH"
+        } ],
+        "AttributeDefinitions" : [ {
+          "AttributeName" : "ADDRESS",
+          "AttributeType" : "S"
+        } ],
+        "ProvisionedThroughput" : {
+          "ReadCapacityUnits" : 5,
+          "WriteCapacityUnits" : 5
+        },
+        "TableName" : "Products"
+      },
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
+    },
+    "OrdersA9B65338" : {
+      "Type" : "AWS::DynamoDB::Table",
+      "Properties" : {
+        "KeySchema" : [ {
+          "AttributeName" : "ADDRESS",
+          "KeyType" : "HASH"
+        } ],
+        "AttributeDefinitions" : [ {
+          "AttributeName" : "ADDRESS",
+          "AttributeType" : "S"
+        } ],
+        "ProvisionedThroughput" : {
+          "ReadCapacityUnits" : 5,
+          "WriteCapacityUnits" : 5
+        },
+        "TableName" : "Orders"
+      },
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
     }
   },
   "Parameters" : {
