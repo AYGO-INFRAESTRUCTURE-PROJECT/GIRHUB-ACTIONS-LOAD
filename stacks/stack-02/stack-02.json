@@ -5,8 +5,8 @@
       "Properties" : {
         "BucketName" : "test-bucket-deploy-02"
       },
-      "UpdateReplacePolicy" : "Retain",
-      "DeletionPolicy" : "Retain"
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
     }
   }
 }
