@@ -228,6 +228,37 @@
       },
       "UpdateReplacePolicy" : "Delete",
       "DeletionPolicy" : "Delete"
+    },
+    "Products229621C6" : {
+      "Type" : "AWS::DynamoDB::Table",
+      "Properties" : {
+        "KeySchema" : [ {
+          "AttributeName" : "ADDRESS",
+          "KeyType" : "HASH"
+        } ],
+        "AttributeDefinitions" : [ {
+          "AttributeName" : "ADDRESS",
+          "AttributeType" : "S"
+        } ],
+        "ProvisionedThroughput" : {
+          "ReadCapacityUnits" : 5,
+          "WriteCapacityUnits" : 5
+        },
+        "TableName" : "Products"
+      },
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
+    },
+    "orderfilesB8CDE178" : {
+      "Type" : "AWS::S3::Bucket",
+      "Properties" : {
+        "BucketName" : "order-files",
+        "VersioningConfiguration" : {
+          "Status" : "Enabled"
+        }
+      },
+      "UpdateReplacePolicy" : "Delete",
+      "DeletionPolicy" : "Delete"
     }
   },
   "Parameters" : {
